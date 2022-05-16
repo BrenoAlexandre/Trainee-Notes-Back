@@ -20,20 +20,20 @@ const envVarsSchema = yup
       .string()
       .oneOf(environmentsString)
       .default(environments.DEVELOPMENT),
-    API_PORT: yup.number().default(3001),
+    API_PORT: yup.number().default(3333),
     PUBLIC_URL: yup.string().default('localhost'),
-    MONGO_DB_HOST: yup.string(), // .required('MONGO_DB_HOST is required'),
-    MONGO_DB_USER: yup.string(), // .required('MONGO_DB_USER is required'),
-    MONGO_DB_PASSWORD: yup.string(), // .required('MONGO_DB_PASSWORD is required'),
-    SALT_WORK_FACTOR: yup.number().default(10),
-    ACCESS_TOKEN_TTL: yup.string().default('15m'),
-    REFRESH_TOKEN_TTL: yup.string().default('1y'),
-    JWT_SECRET: yup.string().required('Secret is required'),
-    GOOGLE_APPLICATION_CREDENTIALS: yup.string(),
-    GOOGLE_MAP_API_KEY: yup.string(),
-    MIXPANEL_TOKEN: yup.string(),
-    PAGARME_API_KEY: yup.string(),
-    PAGARME_CRIPTO_KEY: yup.string(),
+    // MONGO_DB_HOST: yup.string(), // .required('MONGO_DB_HOST is required'),
+    // MONGO_DB_USER: yup.string(), // .required('MONGO_DB_USER is required'),
+    // MONGO_DB_PASSWORD: yup.string(), // .required('MONGO_DB_PASSWORD is required'),
+    // SALT_WORK_FACTOR: yup.number().default(10),
+    // ACCESS_TOKEN_TTL: yup.string().default('15m'),
+    // REFRESH_TOKEN_TTL: yup.string().default('1y'),
+    JWT_SECRET: yup.string(), // .required('Secret is required'),
+    // GOOGLE_APPLICATION_CREDENTIALS: yup.string(),
+    // GOOGLE_MAP_API_KEY: yup.string(),
+    // MIXPANEL_TOKEN: yup.string(),
+    // PAGARME_API_KEY: yup.string(),
+    // PAGARME_CRIPTO_KEY: yup.string(),
     POSTGRES_HOST: yup.string(), // .required('POSTGRES_HOST is required'),
     POSTGRES_PORT: yup.number().default(5432),
     POSTGRES_USER: yup.string(), // .required('POSTGRES_USER is required'),
@@ -55,16 +55,16 @@ const config = {
   env: envVars.NODE_ENV,
   port: envVars.API_PORT,
   publicUrl: envVars.PUBLIC_URL,
-  mongoDb: {
-    url: `${envVars.MONGO_DB_HOST}${
-      envVars.NODE_ENV === 'test' ? '-test' : ''
-    }`,
-    options: {
-      user: envVars.MONGO_DB_USER,
-      pass: envVars.MONGO_DB_PASSWORD,
-      authSource: 'admin',
-    },
-  },
+  // mongoDb: {
+  //   url: `${envVars.MONGO_DB_HOST}${
+  //     envVars.NODE_ENV === 'test' ? '-test' : ''
+  //   }`,
+  //   options: {
+  //     user: envVars.MONGO_DB_USER,
+  //     pass: envVars.MONGO_DB_PASSWORD,
+  //     authSource: 'admin',
+  //   },
+  // },
   postgresDb: {
     host: envVars.POSTGRES_HOST,
     port: envVars.POSTGRES_PORT,
@@ -72,16 +72,16 @@ const config = {
     password: envVars.POSTGRES_PASSWORD,
     database: envVars.POSTGRES_DB,
   },
-  saltWorkFactor: envVars.SALT_WORK_FACTOR,
-  accessTokenTtl: envVars.ACCESS_TOKEN_TTL,
-  refreshTokenTtl: envVars.REFRESH_TOKEN_TTL,
+  // saltWorkFactor: envVars.SALT_WORK_FACTOR,
+  // accessTokenTtl: envVars.ACCESS_TOKEN_TTL,
+  // refreshTokenTtl: envVars.REFRESH_TOKEN_TTL,
   jwtSecret: envVars.JWT_SECRET,
-  googleMapsKey: envVars.GOOGLE_MAP_API_KEY,
-  mixPanelKey: envVars.MIXPANEL_TOKEN,
-  pagarme: {
-    key: envVars.PAGARME_API_KEY,
-    criptoKey: envVars.PAGARME_CRIPTO_KEY,
-  },
+  // googleMapsKey: envVars.GOOGLE_MAP_API_KEY,
+  // mixPanelKey: envVars.MIXPANEL_TOKEN,
+  // pagarme: {
+  //   key: envVars.PAGARME_API_KEY,
+  //   criptoKey: envVars.PAGARME_CRIPTO_KEY,
+  // },
 };
 
 export default config;
