@@ -45,9 +45,15 @@ export const createUserSchema = object({
     password: string()
       .required('Password is required')
       .min(6, 'Password too short - should be 6 chars minimum'),
-    passwordConfirmation: string().required(
-      'Password Confirmation is required'
-    ),
+    // passwordConfirmation: string().required(
+    //   'Password Confirmation is required' //! Pode ser autenticada no front, sem necessidade de trazer mais um dado pra cá
+    // ),
+    email: string().required('Email is required').email('Not a valid email'),
+  }),
+});
+
+export const findUserSchema = object({
+  body: object({
     email: string().required('Email is required').email('Not a valid email'),
   }),
 });

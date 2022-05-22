@@ -1,7 +1,10 @@
 import { Router } from 'express';
-import { createUserHandler } from '../../controllers/user.controller';
+import {
+  createUserHandler,
+  findUserHandler,
+} from '../../controllers/user.controller';
 import validateResource from '../../middlewares/validateResource';
-import { createUserSchema } from '../../schemas/user.schema';
+import { createUserSchema, findUserSchema } from '../../schemas/user.schema';
 
 const routes = Router();
 
@@ -26,6 +29,8 @@ const routes = Router();
  *             schema:
  *                $ref: '#/components/schemas/CreateUserResponse'
  */
-routes.post('/', validateResource(createUserSchema), createUserHandler);
+routes
+  .post('/', validateResource(createUserSchema), createUserHandler)
+  .get('/', validateResource(findUserSchema), findUserHandler);
 
 export default routes;

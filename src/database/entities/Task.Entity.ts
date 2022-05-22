@@ -9,6 +9,6 @@ export default class Tasks extends Base {
   @Column('varchar', { length: 100 })
   public description: string;
 
-  @Column('bool', { default: false })
+  @Column('bool')
   public complete: boolean;
 }

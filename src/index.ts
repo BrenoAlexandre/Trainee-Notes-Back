@@ -16,8 +16,12 @@ const app = express();
 app.use(express.json());
 app.use(helmet());
 app.use(compression());
-app.use(cors());
+const corsOptions = {
+  exposedHeaders: ['Authorization', 'x-refresh'],
+};
+app.use(cors(corsOptions));
 app.options('*', cors());
+
 app.use(deserializeUser);
 
 if (config.env !== environments.PRODUCTION) {

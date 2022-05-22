@@ -10,8 +10,6 @@ export async function createTask(task: {
 }): Promise<Tasks> {
   const { title, description, complete } = task;
 
-  //! A conexão com o ORM não está sendo criada no ../database.ts
-
   const repository = getCustomRepository(TasksRepository);
   const titleExists = await repository.findOne({ where: { title } });
 

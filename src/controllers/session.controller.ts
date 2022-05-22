@@ -18,7 +18,7 @@ export async function createUserSessionHandler(req: Request, res: Response) {
       .status(StatusCodes.UNAUTHORIZED)
       .send('Invalid email or password');
   }
-  const { _id: userId } = user;
+  const { id: userId } = user;
 
   // create a session
   const session = await createSession(
