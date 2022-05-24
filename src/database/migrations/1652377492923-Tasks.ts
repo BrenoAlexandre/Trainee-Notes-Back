@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class Tasks1652377492923 implements MigrationInterface {
+export class Tasks1652909292987 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -24,6 +24,10 @@ export class Tasks1652377492923 implements MigrationInterface {
           {
             name: 'complete',
             type: 'bool',
+          },
+          {
+            name: 'user_id',
+            type: 'uuid',
           },
           {
             name: 'created_at',

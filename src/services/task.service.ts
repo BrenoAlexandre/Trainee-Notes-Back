@@ -33,6 +33,18 @@ export async function findAllTasks(): Promise<Tasks[]> {
 
 ///
 
+export async function findTasksById(id: string): Promise<Tasks[]> {
+  const repository = getCustomRepository(TasksRepository);
+  const tasks = await repository.find({
+    where: { user_id: id },
+    order: { created_at: 'ASC' },
+  });
+
+  return tasks;
+}
+
+///
+
 export async function findTask(id: string): Promise<Tasks> {
   const repository = getCustomRepository(TasksRepository);
   const task = await repository.findOne({ where: { id } });

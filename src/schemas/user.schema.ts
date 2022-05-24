@@ -46,7 +46,7 @@ export const createUserSchema = object({
       .required('Password is required')
       .min(6, 'Password too short - should be 6 chars minimum'),
     // passwordConfirmation: string().required(
-    //   'Password Confirmation is required' //! Pode ser autenticada no front, sem necessidade de trazer mais um dado pra cá
+    //   'Password Confirmation is required' //! Está sendo autenticado no front
     // ),
     email: string().required('Email is required').email('Not a valid email'),
   }),

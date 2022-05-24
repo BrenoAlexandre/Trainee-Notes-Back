@@ -2,6 +2,7 @@ import { Express, Request, Response } from 'express';
 import productRoutes from './v1/product.routes';
 import userRoutes from './v1/user.routes';
 import taskRoutes from './v1/task.routes';
+import tokenRoutes from './v1/token.routes';
 import sessionRoutes from './v1/session.routes';
 
 function routes(app: Express) {
@@ -21,6 +22,7 @@ function routes(app: Express) {
   );
 
   app.use('/api/v1/tasks', taskRoutes);
+  app.use('/api/v1/tokens', tokenRoutes);
   app.use('/api/v1/products', productRoutes);
   app.use('/api/v1/users', userRoutes);
   app.use('/api/v1/sessions', sessionRoutes);

@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(helmet());
 app.use(compression());
 const corsOptions = {
-  exposedHeaders: ['Authorization', 'x-refresh'],
+  exposedHeaders: ['Authorization', 'refresh-auth'],
 };
 app.use(cors(corsOptions));
 app.options('*', cors());

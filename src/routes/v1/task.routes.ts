@@ -5,26 +5,23 @@ import {
   editTaskHandler,
   findAllTasksHandler,
   findTaskHandler,
+  findUserTasksHandlers,
 } from '../../controllers/task.controller';
-import validateResource from '../../middlewares/validateResource';
-import {
-  createTaskSchema,
-  deleteTaskSchema,
-  getTaskSchema,
-  updateTaskSchema,
-} from '../../schemas/task.schema';
+import verifyToken from '../../middlewares/authUser';
 
 const routes = Router();
 
 routes
   .route('')
-  .get(findAllTasksHandler)
-  .post(validateResource(createTaskSchema), createTaskHandler);
+  .get(verifyToken(), findAllTasksHandler)
+  .post(verifyToken(), createTaskHandler);
+
+routes.route('/userId/:id').get(verifyToken(), findUserTasksHandlers);
 
 routes
   .route('/:id')
-  .get(validateResource(getTaskSchema), findTaskHandler)
-  .put(validateResource(updateTaskSchema), editTaskHandler)
-  .delete(validateResource(deleteTaskSchema), deleteTaskHandler);
+  .get(verifyToken(), findTaskHandler)
+  .put(verifyToken(), editTaskHandler)
+  .delete(verifyToken(), deleteTaskHandler);
 
 export default routes;

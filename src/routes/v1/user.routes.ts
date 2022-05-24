@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import {
   createUserHandler,
-  findUserHandler,
+  loginUserHandler,
 } from '../../controllers/user.controller';
 import validateResource from '../../middlewares/validateResource';
-import { createUserSchema, findUserSchema } from '../../schemas/user.schema';
+import { createUserSchema } from '../../schemas/user.schema';
 
 const routes = Router();
 
@@ -31,6 +31,6 @@ const routes = Router();
  */
 routes
   .post('/', validateResource(createUserSchema), createUserHandler)
-  .get('/', validateResource(findUserSchema), findUserHandler);
+  .post('/login', loginUserHandler);
 
 export default routes;
