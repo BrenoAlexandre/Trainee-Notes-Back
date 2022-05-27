@@ -3,25 +3,20 @@ import {
   createTaskHandler,
   deleteTaskHandler,
   editTaskHandler,
-  findAllTasksHandler,
   findTaskHandler,
   findUserTasksHandlers,
 } from '../../controllers/task.controller';
-import verifyToken from '../../middlewares/authUser';
 
 const routes = Router();
 
-routes
-  .route('')
-  .get(verifyToken(), findAllTasksHandler)
-  .post(verifyToken(), createTaskHandler);
+routes.route('').post(createTaskHandler);
 
-routes.route('/userId/:id').get(verifyToken(), findUserTasksHandlers);
+routes.route('/userId/:id').get(findUserTasksHandlers);
 
 routes
   .route('/:id')
-  .get(verifyToken(), findTaskHandler)
-  .put(verifyToken(), editTaskHandler)
-  .delete(verifyToken(), deleteTaskHandler);
+  .get(findTaskHandler)
+  .put(editTaskHandler)
+  .delete(deleteTaskHandler);
 
 export default routes;

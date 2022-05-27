@@ -6,7 +6,7 @@ import {
   editTask,
   findAllTasks,
   findTask,
-  findTasksById,
+  findUserTasksById,
 } from '../services/task.service';
 
 export async function createTaskHandler(
@@ -34,7 +34,7 @@ export async function findUserTasksHandlers(
   res: Response
 ): Promise<Response> {
   const { id } = req.params;
-  const tasks = await findTasksById(id);
+  const tasks = await findUserTasksById(id);
 
   return res.status(StatusCodes.OK).json(tasks);
 }
